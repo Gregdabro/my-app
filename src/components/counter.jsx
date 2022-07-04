@@ -29,8 +29,11 @@ const Counter =()=> {
         setCount((prevState) => prevState - 1);
     }
 
-    const handleTagChange = () => {
-        setTags(["tag4", "tag5"])
+    const handleTagChange = (id) => {
+        // setTags(["tag4", "tag5"])
+        setTags(prevState => prevState.filter(tag => tag !== id));
+        console.log(id)
+
     }
 
     return (
@@ -40,7 +43,7 @@ const Counter =()=> {
                 {tags.map((tag) => (
                     <li key={tag}
                         className="btn btn-primary btn-sm m-2"
-                        onClick={handleTagChange}>
+                        onClick={() => handleTagChange(tag)}>
                         {tag}
                     </li>
                 ))}
